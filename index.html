@@ -7,6 +7,11 @@
 
     <title>Business & Finance</title>
 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- My CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -14,21 +19,66 @@
 
 <div class="page-layout">
 
-    <nav class="navbar">
+    <!-- ================= NAVIGATION ================= -->
 
-        <div class="logo">
-            BF<span>+</span>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 px-lg-5 py-3">
+
+        <div class="container-fluid">
+
+            <a class="navbar-brand fw-bold" href="index.html">
+                BF+
+            </a>
+
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            About Me
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="finance.html">
+                            Finance
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            Contact
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
         </div>
-
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="finance.html">Finance</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
 
     </nav>
 
+
+    <!-- ================= SIDEBAR ================= -->
 
     <aside class="sidebar">
 
@@ -44,160 +94,534 @@
     </aside>
 
 
+    <!-- ================= MAIN ================= -->
+
     <main class="main-content">
+
+
+        <!-- ================= HERO ================= -->
 
         <section class="hero">
 
-            <div class="hero-text">
+            <div class="container">
 
-                <p class="small-title">BUSINESS & FINANCE</p>
+                <div class="row align-items-center g-4">
 
-                <h1 id="main-title">
-                    Build Your<br>
-                    Financial Future
-                </h1>
+                    <!-- LEFT SIDE -->
 
-                <p>
-                    Learn about business, finance, investments
-                    and modern financial strategies.
-                </p>
+                    <div class="col-12 col-lg-6">
 
-                <a href="about.html" class="button">
-                    Explore Business
-                </a>
+                        <div class="hero-text">
 
-            </div>
+                            <p class="small-title">
+                                BUSINESS & FINANCE
+                            </p>
+
+                            <h1 id="main-title">
+                                Build Your<br>
+                                Financial Future
+                            </h1>
+
+                            <p>
+                                Learn about business, finance,
+                                investments and modern financial
+                                strategies.
+                            </p>
+
+                            <a href="about.html" class="btn btn-primary btn-lg">
+                                Explore Business
+                            </a>
+                        </div>
+
+                    </div>
 
 
-            <div class="hero-image">
+                    <!-- RIGHT SIDE -->
 
-                <img
-                        src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=80"
-                        alt="Business meeting"
-                >
+                    <div class="col-12 col-lg-6">
+
+                        <div class="hero-image">
+
+                            <img
+                                    src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=80"
+                                    alt="Business meeting"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
         </section>
 
+
+        <!-- ================= TOPICS ================= -->
 
         <section class="content-section">
 
-            <p class="small-title">OUR TOPICS</p>
+            <p class="small-title">
+                OUR TOPICS
+            </p>
 
-            <h2>Business & Finance</h2>
+            <h2>
+                Business & Finance
+            </h2>
 
             <p class="section-text">
-                Business and finance are important parts of the modern economy.
-                They help companies grow and people manage their money.
+                Business and finance are important parts
+                of the modern economy. They help companies
+                grow and people manage their money.
             </p>
 
 
-            <div class="cards">
+            <!-- BOOTSTRAP GRID -->
 
-                <div class="card">
+            <div class="container mt-5">
 
-                    <div class="card-icon">📊</div>
-
-                    <h3>Business</h3>
-
-                    <p>
-                        Learn how companies work, compete
-                        and grow in the market.
-                    </p>
-
-                </div>
+                <div class="row g-4">
 
 
-                <div class="card">
+                    <!-- CARD 1 -->
 
-                    <div class="card-icon">💰</div>
+                    <div class="col-12 col-md-6 col-lg-4">
 
-                    <h3>Finance</h3>
+                        <div class="card h-100">
 
-                    <p>
-                        Learn about money management,
-                        budgeting and financial planning.
-                    </p>
+                            <div class="card-icon">
+                                📊
+                            </div>
 
-                </div>
+                            <h3>
+                                Business
+                            </h3>
+
+                            <p>
+                                Learn how companies work,
+                                compete and grow in the market.
+                            </p>
+
+                        </div>
+
+                    </div>
 
 
-                <div class="card">
+                    <!-- CARD 2 -->
 
-                    <div class="card-icon">📈</div>
+                    <div class="col-12 col-md-6 col-lg-4">
 
-                    <h3>Investment</h3>
+                        <div class="card h-100">
 
-                    <p>
-                        Understand investments and
-                        long-term financial opportunities.
-                    </p>
+                            <div class="card-icon">
+                                💰
+                            </div>
+
+                            <h3>
+                                Finance
+                            </h3>
+
+                            <p>
+                                Learn about money management,
+                                budgeting and financial planning.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CARD 3 -->
+
+                    <div class="col-12 col-md-6 col-lg-4">
+
+                        <div class="card h-100">
+
+                            <div class="card-icon">
+                                📈
+                            </div>
+
+                            <h3>
+                                Investment
+                            </h3>
+
+                            <p>
+                                Understand investments and
+                                long-term financial opportunities.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="btn-group mt-4" role="group">
+
+                        <a href="about.html" class="btn btn-primary">
+                            About Me
+                        </a>
+
+                        <a href="finance.html" class="btn btn-outline-primary">
+                            Finance
+                        </a>
+
+                        <a href="contact.html" class="btn btn-secondary">
+                            Contact
+                        </a>
+
+                    </div>
+
 
                 </div>
 
             </div>
 
         </section>
-        <section class="gallery-section">
 
-            <p class="small-title">OUR GALLERY</p>
 
-            <h2>Business Gallery</h2>
+        <!-- ================= GALLERY ================= -->
 
-            <div class="gallery">
+        <!-- ================= BOOTSTRAP CAROUSEL ================= -->
 
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=600&q=80" alt="Business meeting">
-                    <div class="gallery-caption">Business Meeting</div>
+        <!-- ================= BOOTSTRAP CAROUSEL ================= -->
+
+        <section class="container my-5">
+
+            <p class="small-title text-center">OUR GALLERY</p>
+            <h2 class="text-center mb-4">Business Gallery</h2>
+
+            <div id="businessCarousel"
+                 class="carousel slide"
+                 data-bs-ride="carousel">
+
+                <!-- INDICATORS -->
+                <div class="carousel-indicators">
+
+                    <button type="button"
+                            data-bs-target="#businessCarousel"
+                            data-bs-slide-to="0"
+                            class="active"
+                            aria-current="true"
+                            aria-label="Slide 1"></button>
+
+                    <button type="button"
+                            data-bs-target="#businessCarousel"
+                            data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+
+                    <button type="button"
+                            data-bs-target="#businessCarousel"
+                            data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+
+                    <button type="button"
+                            data-bs-target="#businessCarousel"
+                            data-bs-slide-to="3"
+                            aria-label="Slide 4"></button>
+
+                    <button type="button"
+                            data-bs-target="#businessCarousel"
+                            data-bs-slide-to="4"
+                            aria-label="Slide 5"></button>
+
+                    <button type="button"
+                            data-bs-target="#businessCarousel"
+                            data-bs-slide-to="5"
+                            aria-label="Slide 6"></button>
+
+                    <button type="button"
+                            data-bs-target="#businessCarousel"
+                            data-bs-slide-to="6"
+                            aria-label="Slide 7"></button>
+
+                    <button type="button"
+                            data-bs-target="#businessCarousel"
+                            data-bs-slide-to="7"
+                            aria-label="Slide 8"></button>
+
+                    <button type="button"
+                            data-bs-target="#businessCarousel"
+                            data-bs-slide-to="8"
+                            aria-label="Slide 9"></button>
+
                 </div>
 
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=600&q=80" alt="Team work">
-                    <div class="gallery-caption">Team Work</div>
+
+                <!-- IMAGES -->
+                <div class="carousel-inner rounded">
+
+                    <!-- 1 -->
+                    <div class="carousel-item active">
+
+                        <img
+                                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1000&q=80"
+                                class="d-block w-100"
+                                alt="Business meeting">
+
+                        <div class="carousel-caption">
+                            <h5>Business Meeting</h5>
+                        </div>
+
+                    </div>
+
+
+                    <!-- 2 -->
+                    <div class="carousel-item">
+
+                        <img
+                                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1000&q=80"
+                                class="d-block w-100"
+                                alt="Team work">
+
+                        <div class="carousel-caption">
+                            <h5>Team Work</h5>
+                        </div>
+
+                    </div>
+
+
+                    <!-- 3 -->
+                    <div class="carousel-item">
+
+                        <img
+                                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=80"
+                                class="d-block w-100"
+                                alt="Team discussion">
+
+                        <div class="carousel-caption">
+                            <h5>Team Discussion</h5>
+                        </div>
+
+                    </div>
+
+
+                    <!-- 4 -->
+                    <div class="carousel-item">
+
+                        <img
+                                src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1000&q=80"
+                                class="d-block w-100"
+                                alt="Modern office">
+
+                        <div class="carousel-caption">
+                            <h5>Modern Office</h5>
+                        </div>
+
+                    </div>
+
+
+                    <!-- 5 -->
+                    <div class="carousel-item">
+
+                        <img
+                                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1000&q=80"
+                                class="d-block w-100"
+                                alt="Business team">
+
+                        <div class="carousel-caption">
+                            <h5>Our Team</h5>
+                        </div>
+
+                    </div>
+
+
+                    <!-- 6 -->
+                    <div class="carousel-item">
+
+                        <img
+                                src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1000&q=80"
+                                class="d-block w-100"
+                                alt="Workplace">
+
+                        <div class="carousel-caption">
+                            <h5>Workplace</h5>
+                        </div>
+
+                    </div>
+
+
+                    <!-- 7 -->
+                    <div class="carousel-item">
+
+                        <img
+                                src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1000&q=80"
+                                class="d-block w-100"
+                                alt="Financial planning">
+
+                        <div class="carousel-caption">
+                            <h5>Financial Planning</h5>
+                        </div>
+
+                    </div>
+
+
+                    <!-- 8 -->
+                    <div class="carousel-item">
+
+                        <img
+                                src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1000&q=80"
+                                class="d-block w-100"
+                                alt="Finance">
+
+                        <div class="carousel-caption">
+                            <h5>Finance</h5>
+                        </div>
+
+                    </div>
+
+
+                    <!-- 9 -->
+                    <div class="carousel-item">
+
+                        <img
+                                src="https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1000&q=80"
+                                class="d-block w-100"
+                                alt="Investment">
+
+                        <div class="carousel-caption">
+                            <h5>Investment</h5>
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" alt="Team discussion">
-                    <div class="gallery-caption">Team Discussion</div>
+
+                <!-- PREVIOUS BUTTON -->
+                <button class="carousel-control-prev"
+                        type="button"
+                        data-bs-target="#businessCarousel"
+                        data-bs-slide="prev">
+
+                    <span class="carousel-control-prev-icon"></span>
+
+                    <span class="visually-hidden">
+                Previous
+            </span>
+
+                </button>
+
+
+                <!-- NEXT BUTTON -->
+                <button class="carousel-control-next"
+                        type="button"
+                        data-bs-target="#businessCarousel"
+                        data-bs-slide="next">
+
+                    <span class="carousel-control-next-icon"></span>
+
+                    <span class="visually-hidden">
+                Next
+            </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- ================= BOOTSTRAP CARDS ================= -->
+
+        <section class="container my-5">
+
+            <p class="small-title text-center">LEARN MORE</p>
+            <h2 class="text-center mb-4">Financial Topics</h2>
+
+            <div class="row g-4">
+
+                <!-- CARD 1 -->
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="card h-100">
+
+                        <img
+                                src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80"
+                                class="card-img-top"
+                                alt="Business">
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                Business
+                            </h5>
+
+                            <p class="card-text">
+                                Learn how businesses grow,
+                                compete and create value.
+                            </p>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80" alt="Office">
-                    <div class="gallery-caption">Modern Office</div>
+
+                <!-- CARD 2 -->
+                <div class="col-12 col-md-6 col-lg-4">
+
+                    <div class="card h-100">
+
+                        <img
+                                src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80"
+                                class="card-img-top"
+                                alt="Finance">
+
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                Finance
+                            </h5>
+
+                            <p class="card-text">
+                                Understand budgeting,
+                                saving and money management.
+                            </p>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=600&q=80" alt="Team">
-                    <div class="gallery-caption">Our Team</div>
-                </div>
 
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=600&q=80" alt="Workplace">
-                    <div class="gallery-caption">Workplace</div>
-                </div>
+                <!-- CARD 3 -->
+                <div class="col-12 col-md-6 col-lg-4">
 
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="Planning">
-                    <div class="gallery-caption">Financial Planning</div>
-                </div>
+                    <div class="card h-100">
 
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=80" alt="Finance">
-                    <div class="gallery-caption">Finance</div>
-                </div>
+                        <img
+                                src="https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=600&q=80"
+                                class="card-img-top"
+                                alt="Investment">
 
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=600&q=80" alt="Investment">
-                    <div class="gallery-caption">Investment</div>
+                        <div class="card-body">
+
+                            <h5 class="card-title">
+                                Investment
+                            </h5>
+
+                            <p class="card-text">
+                                Explore investment and
+                                long-term financial opportunities.
+                            </p>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
             </div>
 
         </section>
+
+
 
     </main>
 
+
+    <!-- ================= FOOTER ================= -->
 
     <footer>
 
@@ -210,5 +634,10 @@
 
 </div>
 
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>

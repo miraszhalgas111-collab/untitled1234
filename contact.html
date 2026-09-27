@@ -3,190 +3,383 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Contact | Business & Finance</title>
 
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- My CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
+
 <body>
 
-<nav class="navbar">
 
-    <div class="logo">
-        BF<span>+</span>
+<!-- ================= NAVIGATION ================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 px-lg-5 py-3"
+     aria-label="Main navigation">
+
+    <div class="container-fluid">
+
+        <!-- Logo -->
+        <a class="navbar-brand fw-bold"
+           href="index.html"
+           aria-label="Business and Finance home">
+
+            BF+
+
+        </a>
+
+
+        <!-- Hamburger button -->
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar"
+                aria-expanded="false"
+                aria-label="Open navigation menu">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <!-- Navigation links -->
+        <div class="collapse navbar-collapse"
+             id="mainNavbar">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="index.html">
+
+                        Home
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="about.html">
+
+                        About Me
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link"
+                       href="finance.html">
+
+                        Finance
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a class="nav-link active"
+                       href="contact.html"
+                       aria-current="page">
+
+                        Contact
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
     </div>
-
-    <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Me</a></li>
-        <li><a href="finance.html">Finance</a></li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
 
 </nav>
 
 
-<section class="contact-section">
 
-    <p class="small-title">GET IN TOUCH</p>
+<!-- ================= MAIN CONTENT ================= -->
 
-    <h1>Let's Talk</h1>
+<main>
 
-    <p class="contact-intro">
-        Have a question about business or finance?
-        Send us a message.
-    </p>
+    <section class="contact-section"
+             aria-labelledby="contact-title">
 
-
-    <div class="contact-container">
+        <p class="small-title">
+            GET IN TOUCH
+        </p>
 
 
-        <img
-                class="contact-image"
-                src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1000&q=80"
-                alt="Business discussion"
-        >
+        <h1 id="contact-title">
+            Let's Talk
+        </h1>
 
 
-        <form>
+        <p class="contact-intro">
+            Have a question about business or finance?
+            Send us a message.
+        </p>
 
 
-            <div class="form-group">
-
-                <label for="name">
-                    Name
-                </label>
-
-                <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder="Enter your name"
-                        required
-                >
-
-            </div>
+        <div class="contact-container">
 
 
-            <div class="form-group">
+            <!-- Accessible image -->
 
-                <label for="email">
-                    Email
-                </label>
-
-                <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Enter your email"
-                        required
-                >
-
-            </div>
+            <img
+                    class="contact-image"
+                    src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=1000&q=80"
+                    alt="People discussing business ideas at a meeting"
+            >
 
 
-            <div class="form-group">
 
-                <label for="topic">
-                    Choose a topic
-                </label>
+            <!-- ================= FORM ================= -->
 
-                <select id="topic" name="topic">
-
-                    <option value="business">
-                        Business
-                    </option>
-
-                    <option value="finance">
-                        Finance
-                    </option>
-
-                    <option value="investment">
-                        Investment
-                    </option>
-
-                    <option value="other">
-                        Other
-                    </option>
-
-                </select>
-
-            </div>
+            <form>
 
 
-            <div class="form-group">
+                <!-- NAME -->
 
-                <label>
-                    Your interest level
-                </label>
+                <div class="mb-3">
 
+                    <label
+                            for="name"
+                            class="form-label">
 
-                <div class="radio-group">
+                        Name
 
-                    <label>
-                        <input
-                                type="radio"
-                                name="level"
-                                value="beginner"
-                        >
-                        Beginner
                     </label>
 
 
-                    <label>
-                        <input
-                                type="radio"
-                                name="level"
-                                value="intermediate"
-                        >
-                        Intermediate
-                    </label>
-
-
-                    <label>
-                        <input
-                                type="radio"
-                                name="level"
-                                value="advanced"
-                        >
-                        Advanced
-                    </label>
+                    <input
+                            type="text"
+                            class="form-control"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your name"
+                            required
+                            aria-required="true"
+                    >
 
                 </div>
 
-            </div>
 
 
-            <div class="form-group">
+                <!-- EMAIL -->
 
-                <label for="message">
-                    Message
-                </label>
+                <div class="mb-3">
 
-                <textarea
-                        id="message"
-                        name="message"
-                        placeholder="Write your message..."
-                ></textarea>
+                    <label
+                            for="email"
+                            class="form-label">
 
-            </div>
+                        Email
+
+                    </label>
 
 
-            <button
-                    type="submit"
-                    class="submit-button"
-            >
-                Send Message
-            </button>
+                    <input
+                            type="email"
+                            class="form-control"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required
+                            aria-required="true"
+                    >
 
-        </form>
+                </div>
 
-    </div>
 
-</section>
 
+                <!-- TOPIC -->
+
+                <div class="mb-3">
+
+                    <label
+                            for="topic"
+                            class="form-label">
+
+                        Choose a topic
+
+                    </label>
+
+
+                    <select
+                            class="form-select"
+                            id="topic"
+                            name="topic">
+
+                        <option value="business">
+                            Business
+                        </option>
+
+                        <option value="finance">
+                            Finance
+                        </option>
+
+                        <option value="investment">
+                            Investment
+                        </option>
+
+                        <option value="other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- INTEREST LEVEL -->
+
+                <fieldset class="mb-3">
+
+                    <legend class="form-label">
+                        Your interest level
+                    </legend>
+
+
+                    <!-- Beginner -->
+
+                    <div class="form-check">
+
+                        <input
+                                class="form-check-input"
+                                type="radio"
+                                name="level"
+                                id="beginner"
+                                value="beginner"
+                        >
+
+                        <label
+                                class="form-check-label"
+                                for="beginner">
+
+                            Beginner
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- Intermediate -->
+
+                    <div class="form-check">
+
+                        <input
+                                class="form-check-input"
+                                type="radio"
+                                name="level"
+                                id="intermediate"
+                                value="intermediate"
+                        >
+
+                        <label
+                                class="form-check-label"
+                                for="intermediate">
+
+                            Intermediate
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- Advanced -->
+
+                    <div class="form-check">
+
+                        <input
+                                class="form-check-input"
+                                type="radio"
+                                name="level"
+                                id="advanced"
+                                value="advanced"
+                        >
+
+                        <label
+                                class="form-check-label"
+                                for="advanced">
+
+                            Advanced
+
+                        </label>
+
+                    </div>
+
+                </fieldset>
+
+
+
+                <!-- MESSAGE -->
+
+                <div class="mb-3">
+
+                    <label
+                            for="message"
+                            class="form-label">
+
+                        Message
+
+                    </label>
+
+
+                    <textarea
+                            class="form-control"
+                            id="message"
+                            name="message"
+                            rows="5"
+                            placeholder="Write your message..."
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- SUBMIT BUTTON -->
+
+                <button
+                        type="submit"
+                        class="btn btn-primary w-100">
+
+                    Send Message
+
+                </button>
+
+
+            </form>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
@@ -197,5 +390,12 @@
 
 </footer>
 
+
+
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+
 </body>
+
 </html>
