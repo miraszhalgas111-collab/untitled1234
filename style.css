@@ -1231,3 +1231,175 @@ footer p {
     background: none;
     cursor: pointer;
 }
+
+.rating-section {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f5f7fa;
+    border-radius: 15px;
+    margin: 30px auto;
+    max-width: 600px;
+}
+
+.stars {
+    margin: 20px 0;
+}
+
+.star {
+    font-size: 40px;
+    color: gray;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.3s;
+    display: inline-block;
+}
+
+.star.active {
+    color: gold;
+}
+
+.star:hover {
+    transform: scale(1.2);
+}
+
+#ratingMessage {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* DAY / NIGHT MODE */
+
+.theme-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+#themeToggle {
+    padding: 12px 25px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#themeToggle:hover {
+    background-color: #0056b3;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+body.dark-mode .rating-section {
+    background-color: #252525;
+    color: white;
+}
+
+body.dark-mode .theme-container {
+    color: white;
+}
+
+.read-more-section {
+    text-align: center;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 650px;
+    background-color: #ffffff;
+    border-radius: 12px;
+}
+
+#readMoreBtn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#extraInfo {
+    margin: 20px 0;
+    line-height: 1.6;
+}
+
+body.dark-mode .read-more-section {
+    background-color: #252525;
+    color: white;
+}
+
+
+.time-section {
+    text-align: center;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 600px;
+    background-color: white;
+    border-radius: 12px;
+}
+
+#showTimeBtn {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#currentTime {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+body.dark-mode .time-section {
+    background-color: #252525;
+    color: white;
+}
+
+/* Finance Topics және Business Greeting */
+
+.finance-selector,
+.finance-greeting {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.finance-selector select,
+.finance-greeting select {
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+.finance-selector button,
+.finance-greeting button {
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ASSIGNMENT 5 - ANIMATION */
+
+#animationBox {
+    width: 100px;
+    height: 100px;
+    background-color: #007bff;
+    border-radius: 15px;
+    transition: transform 0.6s ease,
+    background-color 0.6s ease;
+}
+
+#animationBox.active {
+    transform: translateX(150px) rotate(360deg);
+    background-color: #28a745;
+}

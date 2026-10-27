@@ -473,6 +473,69 @@
     </form>
  </section>
 
+<!-- ASSIGNMENT 5 - MULTI STEP FORM -->
+<section class="container my-5">
+    <h2>Business Consultation</h2>
+    <p>Complete the form step by step.</p>
+
+    <form id="multiStepForm">
+        <div class="form-step">
+            <h3>Step 1: Personal Information</h3>
+            <label for="clientName">Your Name</label>
+            <input type="text" id="clientName"
+                   class="form-control" required>
+        </div>
+
+        <div class="form-step" hidden>
+            <h3>Step 2: Business Information</h3>
+            <label for="businessType">Business Type</label>
+            <select id="businessType" class="form-select">
+                <option value="startup">Startup</option>
+                <option value="finance">Finance</option>
+                <option value="investment">Investment</option>
+            </select>
+        </div>
+
+        <div class="form-step" hidden>
+            <h3>Step 3: Confirmation</h3>
+            <p id="formSummary"></p>
+        </div>
+
+        <div class="mt-3">
+            <button type="button" id="backStep"
+                    class="btn btn-secondary" hidden>Back</button>
+            <button type="button" id="nextStep"
+                    class="btn btn-primary">Next</button>
+        </div>
+    </form>
+</section>
+
+
+<!-- ASSIGNMENT 5 - SOUND EFFECT -->
+<section class="container my-5">
+    <h2>Notification Sound</h2>
+    <p>Click the button to play a sound.</p>
+
+    <button id="soundBtn" type="button"
+            class="btn btn-primary">
+        Play Sound
+    </button>
+</section>
+
+<!-- ASSIGNMENT 5 - ANIMATION -->
+<section class="container my-5">
+    <h2>Business Animation</h2>
+    <p>Click the button to animate the box.</p>
+
+    <div id="animationBox"></div>
+
+    <button id="animateBtn"
+            type="button"
+            class="btn btn-primary mt-3">
+        Start Animation
+    </button>
+</section>
+
 
 
 <!-- ================= FOOTER ================= -->
@@ -485,9 +548,6 @@
     </p>
 
 </footer>
-
-
-
 
 <!-- Bootstrap JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>

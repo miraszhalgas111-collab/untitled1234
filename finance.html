@@ -156,6 +156,71 @@
 
 </section>
 
+
+
+
+<!-- TASK - FINANCE SELECTOR -->
+<section class="finance-selector container my-5">
+    <h2>Explore Finance Topics</h2>
+    <p>Select a topic to learn more.</p>
+
+
+    <label for="financeTopic">Choose a finance topic:</label>
+    <select id="financeTopic">
+        <option value="">Choose a topic</option>
+        <option value="saving">Saving</option>
+        <option value="investment">Investment</option>
+        <option value="budget">Budgeting</option>
+    </select>
+
+    <button id="financeBtn" type="button">
+        Show Information
+    </button>
+
+    <p id="financeResult"></p>
+</section>
+
+<section class="finance-greeting">
+    <h2>Business Greeting</h2>
+    <p>Select a time of day:</p>
+
+    <select id="greetingTime" class="form-select mb-3">
+        <option value="morning">Morning</option>
+        <option value="afternoon">Afternoon</option>
+        <option value="evening">Evening</option>
+    </select>
+
+    <button id="greetingBtn" class="btn btn-primary">
+        Show Greeting
+    </button>
+
+    <p id="greetingResult" class="mt-3"></p>
+</section>
+
+
+<script src="script.js"></script>
+
+<section class="finance-selector container my-5">
+    <h2>Business Information</h2>
+    <p>Learn more about our business services.</p>
+
+    <button id="businessInfoBtn" type="button">
+        Show Business Details
+    </button>
+
+    <p id="businessInfoResult"></p>
+</section>
+
+<section class="finance-selector container my-5">
+    <h2>Our Financial Services</h2>
+    <p>Explore our available services.</p>
+
+    <button id="servicesBtn" type="button">
+        Show Services
+    </button>
+
+    <ul id="servicesList"></ul>
+</section>
 <footer>
 
     <p>
@@ -164,6 +229,5 @@
     </p>
 
 </footer>
-
 </body>
 </html>
