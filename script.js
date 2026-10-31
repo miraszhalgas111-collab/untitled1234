@@ -350,7 +350,7 @@ if (greetingBtn) {
     });
 }
 
-// ASSIGNMENT 5 - OBJECTS AND METHODS
+// ASSIGNMENT 5
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -376,7 +376,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-// ASSIGNMENT 5 - ARRAYS AND LOOPS
+// ASSIGNMENT 5
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -442,7 +442,7 @@ if (soundBtn) {
     });
 }
 
-// ASSIGNMENT 5 - ANIMATION
+// ASSIGNMENT 5
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -456,3 +456,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+
+$(document).ready(function () {
+    console.log("jQuery is ready!");
+
+});
