@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 message.textContent = "Registration successful!";
                 message.style.color = "green";
+                showToast("Registration successful!", "success");
             }
         });
     }
@@ -68,14 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    if (subscribeForm && popup) {
-        subscribeForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-            alert("Thank you for subscribing!");
-            popup.style.display = "none";
-            subscribeForm.reset();
-        });
-    }
+
 
     // TASK 4
     const colorBtn = document.getElementById("changeColor");
@@ -138,6 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 ratingMessage.textContent =
                     "You rated us " + rating + " out of 5 stars!";
+                showToast("Thanks for your rating!", "success");
             });
         });
 
@@ -460,4 +455,162 @@ document.addEventListener("DOMContentLoaded", function () {
 $(document).ready(function () {
     console.log("jQuery is ready!");
 
+    // TASK 1: Live filter
+    $("#liveSearch").on("keyup", function () {
+        const q = $(this).val().toLowerCase().trim();
+        $("#articleList .article-item").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(q) > -1);
+        });
+        $("#noResults").toggle($("#articleList .article-item:visible").length === 0);
+    });
+
+// TASK 2: Autocomplete
+    const titles = $("#articleList .article-item").map(function () {
+        return $(this).text().trim();
+    }).get();
+
+    $("#liveSearch").on("input", function () {
+        const q = $(this).val().toLowerCase().trim();
+        const $box = $("#suggestions").empty();
+        const matches = q ? titles.filter(t => t.toLowerCase().includes(q)).slice(0, 5) : [];
+        if (!matches.length) { $box.hide(); return; }
+        matches.forEach(t => $("<li>").text(t).appendTo($box));
+        $box.show();
+    });
+
+    $("#suggestions").on("click", "li", function () {
+        $("#liveSearch").val($(this).text()).trigger("keyup");
+        $("#suggestions").hide();
+    });
+
+    $(document).on("click", function (e) {
+        if (!$(e.target).closest(".search-wrap").length) $("#suggestions").hide();
+    });
+
+    $("#faqSearch").on("keyup", function () {
+        const term = $(this).val().trim();
+        let count = 0;
+
+        $(".faq-question, .faq-answer p").each(function () {
+            const $el = $(this);
+            if ($el.data("orig") === undefined) $el.data("orig", $el.text().trim());
+            const orig = $el.data("orig");
+
+            if (term.length < 2) { $el.text(orig); return; }
+
+            const safe = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            const re = new RegExp("(" + safe + ")", "gi");
+            const found = orig.match(re);
+
+            if (found) {
+                count += found.length;
+                $el.html(orig.replace(re, '<mark class="highlight">$1</mark>'));
+                if ($el.is("p")) $el.closest(".faq-answer").addClass("active");
+            } else {
+                $el.text(orig);
+            }
+        });
+
+        $("#faqCount").text(term.length < 2 ? "" : count + " match(es) found");
+    })
+
+    $("body").prepend('<div id="scrollProgress"><div id="scrollBar"></div></div>');
+
+    $(window).on("scroll resize", function () {
+        const max = $(document).height() - $(window).height();
+        const pct = max > 0 ? ($(window).scrollTop() / max) * 100 : 0;
+        $("#scrollBar").css("width", pct + "%");
+    });
+
+    let counted = false;
+    function runCounters() {
+        if (counted || !$("#stats").length) return;
+        if ($(window).scrollTop() + $(window).height() > $("#stats").offset().top + 50) {
+            counted = true;
+            $(".counter").each(function () {
+                const $c = $(this);
+                const target = Number($c.data("target"));
+                $({ n: 0 }).animate({ n: target }, {
+                    duration: 2000,
+                    step: function (now) { $c.text(Math.floor(now)); },
+                    complete: function () { $c.text(target); }
+                });
+            });
+        }
+    }
+    $(window).on("scroll", runCounters);
+    runCounters();
+
+    $("#contactForm, #subscribeForm").on("submit", function (e) {
+        e.preventDefault();
+        if (!this.checkValidity()) { this.reportValidity(); return; }
+
+        const $form = $(this);
+        const $btn = $form.find("button[type='submit']");
+        const original = $btn.html();
+
+        $btn.prop("disabled", true).html('<span class="spinner"></span> Please wait...');
+
+        setTimeout(function () {
+            $btn.prop("disabled", false).html(original);
+            $form[0].reset();
+            if ($form.is("#subscribeForm")) $("#popup").hide();
+            showToast("Form submitted successfully!", "success");
+        }, 2000);
+    });
+
+    $(".copy-btn").on("click", function () {
+        const $btn = $(this);
+        const text = $btn.siblings("code").text();
+
+        const done = function () {
+            $btn.addClass("copied").find(".copy-icon").text("✔");
+            showToast("Copied to clipboard!", "success");
+            setTimeout(function () {
+                $btn.removeClass("copied").find(".copy-icon").text("📋");
+            }, 2000);
+        };
+
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(text).then(done);
+        } else {
+            const $tmp = $("<textarea>").val(text).appendTo("body").select();
+            document.execCommand("copy");
+            $tmp.remove();
+            done();
+        }
+    });
+
+    $(".snippet code").on("copy", function () {
+        showToast("Text copied!", "success");
+    });
+
+    function lazyLoad() {
+        $("img.lazy:visible").each(function () {
+            const $img = $(this);
+            if ($img.offset().top < $(window).scrollTop() + $(window).height() + 100) {
+                $img.attr("src", $img.attr("data-src")).removeClass("lazy").addClass("loaded");
+            }
+        });
+    }
+    $(window).on("scroll resize", lazyLoad);
+    lazyLoad();
+
+    const car = document.getElementById("businessCarousel");
+    if (car) {
+        car.addEventListener("slide.bs.carousel", function (e) {
+            $(e.relatedTarget).find("img.lazy").each(function () {
+                $(this).attr("src", $(this).attr("data-src")).removeClass("lazy");
+            });
+        });
+    }
+
 });
+
+
+function showToast(message, type) {
+    if (!$("#toastContainer").length) $("body").append('<div id="toastContainer"></div>');
+    const $t = $('<div class="toast-msg"></div>').addClass(type || "success").text(message);
+    $("#toastContainer").append($t);
+    $t.hide().fadeIn(300).delay(2500).fadeOut(500, function () { $(this).remove(); });
+}
