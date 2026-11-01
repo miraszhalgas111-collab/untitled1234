@@ -558,7 +558,6 @@ $(document).ready(function () {
             showToast("Form submitted successfully!", "success");
         }, 2000);
     });
-
     $(".copy-btn").on("click", function () {
         const $btn = $(this);
         const text = $btn.siblings("code").text();
@@ -571,13 +570,22 @@ $(document).ready(function () {
             }, 2000);
         };
 
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(text).then(done);
-        } else {
+        // ескі тәсіл: жасырын textarea арқылы көшіру
+        const fallbackCopy = function () {
             const $tmp = $("<textarea>").val(text).appendTo("body").select();
-            document.execCommand("copy");
+            const ok = document.execCommand("copy");
             $tmp.remove();
-            done();
+            if (ok) {
+                done();
+            } else {
+                showToast("Copy failed", "error");
+            }
+        };
+
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(done).catch(fallbackCopy);
+        } else {
+            fallbackCopy();
         }
     });
 
