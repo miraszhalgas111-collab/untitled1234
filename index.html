@@ -24,9 +24,9 @@
 
     <!-- ================= NAVIGATION ================= -->
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3 px-lg-5 py-3">
 
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white px-3 py-3">
+        <div class="container">
 
             <a class="navbar-brand fw-bold" href="index.html">
                 BF+
@@ -39,62 +39,38 @@
                     aria-controls="mainNavbar"
                     aria-expanded="false"
                     aria-label="Toggle navigation">
-
                 <span class="navbar-toggler-icon"></span>
-
             </button>
 
             <div class="collapse navbar-collapse" id="mainNavbar">
 
-                <ul class="navbar-nav ms-auto">
-
+                <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.html">
-                            Home
-                        </a>
+                        <a class="nav-link active" href="index.html">Home</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">
-                            About Me
-                        </a>
+                        <a class="nav-link" href="about.html">About Me</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="finance.html">
-                            Finance
-                        </a>
+                        <a class="nav-link" href="finance.html">Finance</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">
-                            Contact
-                        </a>
+                        <a class="nav-link" href="contact.html">Contact</a>
                     </li>
-
                 </ul>
 
+                <div class="d-flex gap-2">
+                    <a href="contact.html#loginBox" class="btn login-btn">
+                        Log In
+                    </a>
+                    <a href="contact.html#signupBox" class="btn signup-btn">
+                        Sign Up
+                    </a>
+                </div>
+
             </div>
-
         </div>
-
     </nav>
-
-
-    <!-- ================= SIDEBAR ================= -->
-
-    <aside class="sidebar">
-
-        <h3>Topics</h3>
-
-        <ul>
-            <li>Business</li>
-            <li>Finance</li>
-            <li>Investment</li>
-            <li>Money Management</li>
-        </ul>
-
-    </aside>
 
 
     <!-- ================= MAIN ================= -->
@@ -632,47 +608,6 @@
             </button>
         </div>
 
-        <section class="read-more-section">
-            <h2>About Business & Finance</h2>
-
-            <p>Learn more about business and finance.</p>
-
-            <p id="extraInfo" style="display: none;">
-                Business and finance help people manage money,
-                understand investments, build successful companies,
-                and make better financial decisions.
-            </p>
-
-            <button id="readMoreBtn" type="button">
-                Read More
-            </button>
-        </section>
-
-        <section class="rating-section">
-            <h2>Rate Our Business Website</h2>
-            <p>How would you rate our website?</p>
-
-            <div class="stars">
-                <span class="star" data-value="1">★</span>
-                <span class="star" data-value="2">★</span>
-                <span class="star" data-value="3">★</span>
-                <span class="star" data-value="4">★</span>
-                <span class="star" data-value="5">★</span>
-            </div>
-
-            <p id="ratingMessage">No rating selected</p>
-        </section>
-
-        <section class="time-section">
-            <h2>Current Time</h2>
-            <p>Click the button to see the current time.</p>
-
-            <button id="showTimeBtn" type="button">
-                Show Current Time
-            </button>
-
-            <p id="currentTime"></p>
-        </section>
 
 
 

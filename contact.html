@@ -23,6 +23,12 @@
 
 <body>
 
+<div class="theme-container">
+    <button id="themeToggle" type="button">
+        🌙 Dark Mode
+    </button>
+</div>
+
 
 <!-- ================= NAVIGATION ================= -->
 
@@ -158,7 +164,7 @@
 
             <!-- ================= FORM ================= -->
 
-            <form id="contactForm">
+            <form id="contactForm" novalidate>
 
 
                 <!-- NAME -->
@@ -180,7 +186,6 @@
                             id="name"
                             name="name"
                             placeholder="Enter your name"
-                            required
                             aria-required="true"
                     >
 
@@ -207,7 +212,6 @@
                             id="email"
                             name="email"
                             placeholder="Enter your email"
-                            required
                             aria-required="true"
                     >
 
@@ -378,46 +382,8 @@
 
     </section>
 
-    <section class="container my-5">
-        <h2>Frequently Asked Questions</h2>
 
-        <input type="text" id="faqSearch" class="form-control mb-3" placeholder="Search FAQ...">
-        <p id="faqCount"></p>
 
-        <div class="faq-item">
-            <button class="faq-question" type="button">
-                What is Business & Finance?
-            </button>
-            <div class="faq-answer">
-                <p>Business & Finance helps people learn about money and business.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <button class="faq-question" type="button">
-                How can I contact you?
-            </button>
-            <div class="faq-answer">
-                <p>You can contact us through our contact form.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <button class="faq-question" type="button">
-                Is the website free?
-            </button>
-            <div class="faq-answer">
-                <p>Yes, our website is free to use.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="container my-5">
-        <h2>Subscribe to Our Newsletter</h2>
-        <button id="openPopup" class="btn btn-primary">
-            Subscribe
-        </button>
-    </section>
 
     <div id="popup" class="popup">
         <div class="popup-content">
@@ -425,8 +391,8 @@
                     type="button" aria-label="Close">&times;</button>
             <h2>Subscribe</h2>
 
-            <form id="subscribeForm">
-                <input type="email" id="subscribeEmail"
+            <form id="subscribeForm" novalidate>
+                <input type="text" id="subscribeEmail"
                        class="form-control mb-3"
                        placeholder="Enter your email" required>
                 <button type="submit" class="btn btn-primary">
@@ -437,84 +403,109 @@
     </div>
 
 
-    <section class="container my-5">
-        <h2>Change Background Color</h2>
-        <button id="changeColor" type="button" class="btn btn-success">
-            Change Color
-        </button>
-    </section>
-
-    <section class="container my-5">
-        <h2>Current Date and Time</h2>
-        <p id="dateTime"></p>
-    </section>
-
-
-
-
-
 </main>
 
- <section class="container my-5">
-    <h2>Registration Form</h2>
 
-    <form id="registerForm">
-        <input type="email" id="registerEmail"
-               class="form-control mb-3"
-               placeholder="Email">
+<section class="container my-5 auth-section">
+    <h2 class="text-center">My Account</h2>
 
-        <input type="password" id="password"
-               class="form-control mb-3"
-               placeholder="Password">
+    <!-- SIGN UP -->
+    <div id="signupBox" class="auth-box">
+        <h3>Create Account</h3>
 
-        <input type="password" id="confirmPassword"
-               class="form-control mb-3"
-               placeholder="Confirm Password">
+        <form id="signupForm" novalidate>
 
-        <button type="submit" class="btn btn-primary">
-            Register
+            <input type="text" id="signupName"
+                   class="form-control mb-3"
+                   placeholder="Full Name">
+
+            <input type="text" id="signupEmail"
+                   class="form-control mb-3"
+                   placeholder="Email Address">
+
+            <input type="text"
+                   id="signupPhone"
+                   class="form-control mb-3"
+                   placeholder="Phone Number">
+
+            <p id="phoneMessage"></p>
+
+
+
+            <div class="password-wrapper mb-3">
+                <input type="password" id="signupPassword"
+                       class="form-control"
+                       placeholder="Password">
+
+                <button type="button" class="toggle-password"
+                        data-target="signupPassword">👁</button>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Sign Up
+            </button>
+
+            <p id="signupMessage"></p>
+        </form>
+
+        <p>Already have an account?
+            <button type="button" id="showLogin" class="text-link">
+                Log In
+            </button>
+        </p>
+    </div>
+
+
+    <!-- LOG IN -->
+    <div id="loginBox" class="auth-box" hidden>
+        <h3>Welcome Back</h3>
+
+        <form id="loginForm" novalidate>
+
+            <input type="text" id="loginEmail"
+                   class="form-control mb-3"
+                   placeholder="Email Address">
+
+            <div class="password-wrapper mb-3">
+                <input type="password" id="loginPassword"
+                       class="form-control"
+                       placeholder="Password">
+
+                <button type="button" class="toggle-password"
+                        data-target="loginPassword">👁</button>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Log In
+            </button>
+
+            <p id="loginMessage"></p>
+        </form>
+
+        <p>Don't have an account?
+            <button type="button" id="showSignup" class="text-link">
+                Sign Up
+            </button>
+        </p>
+    </div>
+
+    <!-- PROFILE -->
+    <div id="profileBox" class="auth-box" hidden>
+        <h3>My Profile</h3>
+
+        <p id="profileName"></p>
+        <p id="profileEmail"></p>
+        <p id="profilePhone"></p>
+
+        <button type="button" id="logoutBtn"
+                class="btn btn-danger">
+            Log Out
         </button>
-
-        <p id="formMessage" class="mt-3"></p>
-    </form>
- </section>
-
-<!-- ASSIGNMENT 5 - MULTI STEP FORM -->
-<section class="container my-5">
-    <h2>Business Consultation</h2>
-    <p>Complete the form step by step.</p>
-
-    <form id="multiStepForm">
-        <div class="form-step">
-            <h3>Step 1: Personal Information</h3>
-            <label for="clientName">Your Name</label>
-            <input type="text" id="clientName"
-                   class="form-control" required>
-        </div>
-
-        <div class="form-step" hidden>
-            <h3>Step 2: Business Information</h3>
-            <label for="businessType">Business Type</label>
-            <select id="businessType" class="form-select">
-                <option value="startup">Startup</option>
-                <option value="finance">Finance</option>
-                <option value="investment">Investment</option>
-            </select>
-        </div>
-
-        <div class="form-step" hidden>
-            <h3>Step 3: Confirmation</h3>
-            <p id="formSummary"></p>
-        </div>
-
-        <div class="mt-3">
-            <button type="button" id="backStep"
-                    class="btn btn-secondary" hidden>Back</button>
-            <button type="button" id="nextStep"
-                    class="btn btn-primary">Next</button>
-        </div>
-    </form>
+    </div>
 </section>
+
+
+
 
 
 <!-- ASSIGNMENT 5 - SOUND EFFECT -->

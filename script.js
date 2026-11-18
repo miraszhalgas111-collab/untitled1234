@@ -33,13 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    //TASK 2
-    document.querySelectorAll(".faq-question").forEach(button => {
-        button.addEventListener("click", function () {
-            const answer = this.nextElementSibling;
-            answer.classList.toggle("active");
-        });
-    });
 
     // TASK 3
     const popup = document.getElementById("popup");
@@ -138,55 +131,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 });
-
-document.addEventListener("DOMContentLoaded", function () {
-    const readMoreBtn = document.getElementById("readMoreBtn");
-    const extraInfo = document.getElementById("extraInfo");
-
-    if (readMoreBtn && extraInfo) {
-        readMoreBtn.addEventListener("click", function () {
-            if (extraInfo.style.display === "none") {
-                extraInfo.style.display = "block";
-                readMoreBtn.textContent = "Read Less";
-            } else {
-                extraInfo.style.display = "none";
-                readMoreBtn.textContent = "Read More";
-            }
-        });
-    }
-});
-
 // DARK MODE
+
 document.addEventListener("DOMContentLoaded", function () {
     const themeToggle = document.getElementById("themeToggle");
+
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+    }
+
+    function updateButton() {
+        if (themeToggle) {
+            if (document.body.classList.contains("dark-mode")) {
+                themeToggle.textContent = "☀️ Light Mode";
+            } else {
+                themeToggle.textContent = "🌙 Dark Mode";
+            }
+        }
+    }
+
+    updateButton();
 
     if (themeToggle) {
         themeToggle.addEventListener("click", function () {
             document.body.classList.toggle("dark-mode");
 
             if (document.body.classList.contains("dark-mode")) {
-                themeToggle.textContent = "☀️ Light Mode";
+                localStorage.setItem("theme", "dark");
             } else {
-                themeToggle.textContent = "🌙 Dark Mode";
+                localStorage.setItem("theme", "light");
             }
+
+            updateButton();
         });
     }
-});
-
-
-// TASK 2 - CURRENT TIME
-document.addEventListener("DOMContentLoaded", function () {
-
-    const showTimeBtn = document.getElementById("showTimeBtn");
-    const currentTime = document.getElementById("currentTime");
-
-    if (showTimeBtn && currentTime) {
-        showTimeBtn.addEventListener("click", function () {
-            const time = new Date().toLocaleTimeString();
-            currentTime.textContent = "Current Time: " + time;
-        });
-    }
-
 });
 
 // TASK - KEYBOARD NAVIGATION
@@ -215,64 +195,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-});
-
-// ASSIGNMENT 5 - CALLBACK FUNCTION
-document.addEventListener("DOMContentLoaded", function () {
-    const steps = document.querySelectorAll("#multiStepForm .form-step");
-    const nextBtn = document.getElementById("nextStep");
-    const backBtn = document.getElementById("backStep");
-
-    if (!steps.length || !nextBtn || !backBtn) return;
-
-    let currentStep = 0;
-
-    function showStep(index) {
-        steps.forEach((step, i) => {
-            step.hidden = i !== index;
-        });
-
-        backBtn.hidden = index === 0;
-        nextBtn.textContent =
-            index === steps.length - 1 ? "Finish" : "Next";
-    }
-
-    function changeStep(direction, callback) {
-        const nextIndex = currentStep + direction;
-
-        if (nextIndex >= 0 && nextIndex < steps.length) {
-            currentStep = nextIndex;
-            callback(currentStep);
-        }
-    }
-
-    nextBtn.addEventListener("click", function () {
-        if (currentStep === 0) {
-            const name = document.getElementById("clientName");
-            if (!name.reportValidity()) return;
-        }
-
-        if (currentStep === 1) {
-            const name = document.getElementById("clientName").value;
-            const type = document.getElementById("businessType").value;
-
-            document.getElementById("formSummary").textContent =
-                "Name: " + name + " | Business: " + type;
-        }
-
-        if (currentStep === steps.length - 1) {
-            alert("Consultation form completed!");
-            return;
-        }
-
-        changeStep(1, showStep);
-    });
-
-    backBtn.addEventListener("click", function () {
-        changeStep(-1, showStep);
-    });
-
-    showStep(currentStep);
 });
 
 // ASSIGNMENT 5 - SWITCH STATEMENT
@@ -329,21 +251,6 @@ if (financeBtn) {
 
 // BUSINESS GREETING
 const greetingBtn = document.getElementById("greetingBtn");
-
-if (greetingBtn) {
-    greetingBtn.addEventListener("click", function () {
-        const time = document.getElementById("greetingTime").value;
-        const result = document.getElementById("greetingResult");
-
-        if (time === "morning") {
-            result.textContent = "Good morning! Have a productive day!";
-        } else if (time === "afternoon") {
-            result.textContent = "Good afternoon! Keep working hard!";
-        } else if (time === "evening") {
-            result.textContent = "Good evening! Great work today!";
-        }
-    });
-}
 
 // ASSIGNMENT 5
 
@@ -456,13 +363,33 @@ $(document).ready(function () {
     console.log("jQuery is ready!");
 
     // TASK 1: Live filter
+
     $("#liveSearch").on("keyup", function () {
         const q = $(this).val().toLowerCase().trim();
+
+        // Save search query
+        localStorage.setItem("financeSearch", q);
+
         $("#articleList .article-item").filter(function () {
-            $(this).toggle($(this).text().toLowerCase().indexOf(q) > -1);
+            $(this).toggle(
+                $(this).text().toLowerCase().indexOf(q) > -1
+            );
         });
-        $("#noResults").toggle($("#articleList .article-item:visible").length === 0);
+
+        $("#noResults").toggle(
+            $("#articleList .article-item:visible").length === 0
+        );
     });
+
+// Restore previous search
+    $(document).ready(function () {
+        const savedSearch = localStorage.getItem("financeSearch");
+
+        if (savedSearch) {
+            $("#liveSearch").val(savedSearch).trigger("keyup");
+        }
+    });
+
 
 // TASK 2: Autocomplete
     const titles = $("#articleList .article-item").map(function () {
@@ -543,7 +470,41 @@ $(document).ready(function () {
 
     $("#contactForm, #subscribeForm").on("submit", function (e) {
         e.preventDefault();
-        if (!this.checkValidity()) { this.reportValidity(); return; }
+
+        const form = this;
+        const emailInput = form.querySelector(
+            "#email, #subscribeEmail"
+        );
+        const nameInput = form.querySelector("#name");
+        const messageInput = form.querySelector("#message");
+
+        const email = emailInput ? emailInput.value.trim() : "";
+
+        if (nameInput && !nameInput.value.trim()) {
+            showToast("Please enter your name!", "error");
+            nameInput.focus();
+            return;
+        }
+
+        if (!email) {
+            showToast("Please enter your email!", "error");
+            emailInput.focus();
+            return;
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailPattern.test(email)) {
+            showToast("Please enter a valid email!", "error");
+            emailInput.focus();
+            return;
+        }
+
+        if (messageInput && !messageInput.value.trim()) {
+            showToast("Please enter your message!", "error");
+            messageInput.focus();
+            return;
+        }
 
         const $form = $(this);
         const $btn = $form.find("button[type='submit']");
@@ -622,3 +583,316 @@ function showToast(message, type) {
     $("#toastContainer").append($t);
     $t.hide().fadeIn(300).delay(2500).fadeOut(500, function () { $(this).remove(); });
 }
+
+
+
+
+// =====================================
+// SIGN UP, LOGIN AND PROFILE
+// =====================================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const signupBox = document.getElementById("signupBox");
+    const loginBox = document.getElementById("loginBox");
+    const profileBox = document.getElementById("profileBox");
+
+    // Егер бұл бетте тіркелу формасы болмаса, тоқтау
+    if (!signupBox) return;
+
+    const signupForm = document.getElementById("signupForm");
+    const loginForm = document.getElementById("loginForm");
+
+    // Show Login
+    document.getElementById("showLogin").addEventListener("click", function () {
+        signupBox.hidden = true;
+        loginBox.hidden = false;
+    });
+
+    // Show Signup
+    document.getElementById("showSignup").addEventListener("click", function () {
+        loginBox.hidden = true;
+        signupBox.hidden = false;
+    });
+
+    // SIGN UP
+
+    signupForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("signupName").value.trim();
+        const email = document.getElementById("signupEmail").value.trim();
+        const phone = document.getElementById("signupPhone").value.trim();
+        const password = document.getElementById("signupPassword").value;
+
+        const message = document.getElementById("signupMessage");
+        const phoneMessage = document.getElementById("phoneMessage");
+
+        // Clear previous messages
+        message.textContent = "";
+        phoneMessage.textContent = "";
+
+        // Required fields
+        if (!name || !email || !phone || !password) {
+            message.textContent = "Please fill in all fields!";
+            message.style.color = "red";
+            return;
+        }
+
+        // Email validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailPattern.test(email)) {
+            message.textContent = "Please enter a valid email!";
+            message.style.color = "red";
+            return;
+        }
+
+        // Phone validation
+        if (!/^\+?[0-9]{10,15}$/.test(phone)) {
+            phoneMessage.textContent = "Enter a valid phone number!";
+            phoneMessage.style.color = "red";
+            return;
+        }
+
+        // Password validation
+        if (password.length < 8 ||
+            !/[A-Z]/.test(password) ||
+            !/[0-9]/.test(password)) {
+
+            message.textContent =
+                "Password needs 8 characters, one uppercase letter and one number!";
+
+            message.style.color = "red";
+            return;
+        }
+
+        // Save user
+        const user = {
+            name: name,
+            email: email,
+            phone: phone,
+            password: password
+        };
+
+        localStorage.setItem("registeredUser", JSON.stringify(user));
+
+        message.textContent = "Registration successful!";
+        message.style.color = "green";
+
+        signupForm.reset();
+    });
+
+
+
+// LOG IN
+    loginForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const email = document.getElementById("loginEmail").value.trim();
+        const password = document.getElementById("loginPassword").value;
+        const message = document.getElementById("loginMessage");
+
+        message.textContent = "";
+
+        if (!email || !password) {
+            message.textContent = "Please fill in all fields!";
+            message.style.color = "red";
+            return;
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailPattern.test(email)) {
+            message.textContent = "Please enter a valid email!";
+            message.style.color = "red";
+            return;
+        }
+
+        const savedUser = JSON.parse(
+            localStorage.getItem("registeredUser")
+        );
+
+        if (!savedUser || savedUser.email !== email ||
+            savedUser.password !== password) {
+            message.textContent = "Incorrect email or password!";
+            message.style.color = "red";
+            return;
+        }
+
+        localStorage.setItem("loggedInUser", JSON.stringify(savedUser));
+
+        showProfile(savedUser);
+    });
+
+
+    // PROFILE
+    function showProfile(user) {
+        signupBox.hidden = true;
+        loginBox.hidden = true;
+        profileBox.hidden = false;
+
+        document.getElementById("profileName").textContent =
+            "Name: " + user.name;
+
+        document.getElementById("profileEmail").textContent =
+            "Email: " + user.email;
+        document.getElementById("profilePhone").textContent =
+            "Phone: " + (user.phone || "Not provided");
+    }
+
+    // LOG OUT
+    document.getElementById("logoutBtn").addEventListener("click", function () {
+        localStorage.removeItem("loggedInUser");
+
+        profileBox.hidden = true;
+        loginBox.hidden = false;
+    });
+
+    // Restore session
+    const loggedInUser = JSON.parse(
+        localStorage.getItem("loggedInUser")
+    );
+
+    if (loggedInUser) {
+        showProfile(loggedInUser);
+    }
+});
+
+
+
+// =====================================
+// LIVE CURRENCY EXCHANGE API
+// =====================================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const loadButton = document.getElementById("loadRatesBtn");
+
+    // Run only on Finance page
+    if (!loadButton) return;
+
+    const loading = document.getElementById("currencyLoading");
+    const error = document.getElementById("currencyError");
+
+    async function loadCurrencyRates() {
+
+        loading.textContent = "Loading exchange rates...";
+        error.textContent = "";
+
+        loadButton.disabled = true;
+
+        try {
+            const response = await fetch(
+                "https://open.er-api.com/v6/latest/USD"
+            );
+
+            if (!response.ok) {
+                throw new Error("API request failed");
+            }
+
+            const data = await response.json();
+
+            if (data.result !== "success") {
+                throw new Error("Unable to load currency data");
+            }
+
+            const rates = data.rates;
+
+            document.getElementById("kztRate").textContent =
+                "1 USD = " + rates.KZT.toFixed(2) + " KZT";
+
+            document.getElementById("eurRate").textContent =
+                "1 USD = " + rates.EUR.toFixed(4) + " EUR";
+
+            document.getElementById("gbpRate").textContent =
+                "1 USD = " + rates.GBP.toFixed(4) + " GBP";
+
+            document.getElementById("rubRate").textContent =
+                "1 USD = " + rates.RUB.toFixed(2) + " RUB";
+
+            document.getElementById("currencyDate").textContent =
+                "Last updated: " + data.time_last_update_utc;
+
+            loading.textContent = "Exchange rates loaded successfully!";
+
+        } catch (err) {
+
+            loading.textContent = "";
+            error.textContent =
+                "Unable to load exchange rates. Please try again.";
+
+            console.error("Currency API Error:", err);
+
+        } finally {
+            loadButton.disabled = false;
+        }
+    }
+
+    loadButton.addEventListener("click", loadCurrencyRates);
+
+    // Load rates automatically when Finance page opens
+    loadCurrencyRates();
+
+});
+
+
+
+
+// COPY FINANCIAL SNIPPETS
+
+document.addEventListener("click", async function (e) {
+
+    const button = e.target.closest(".copy-btn");
+
+    if (!button) return;
+
+    const text = button.dataset.copy;
+
+    try {
+        await navigator.clipboard.writeText(text);
+
+        button.textContent = "✓ Copied!";
+        button.classList.add("copied");
+
+        setTimeout(function () {
+            button.textContent = "📋 Copy";
+            button.classList.remove("copied");
+        }, 2000);
+
+    } catch (error) {
+        button.textContent = "Copy failed!";
+        console.error("Clipboard error:", error);
+    }
+});
+
+document.querySelectorAll(".toggle-password").forEach(function(button) {
+    button.addEventListener("click", function() {
+        const input = document.getElementById(this.dataset.target);
+
+        if (input.type === "password") {
+            input.type = "text";
+            this.textContent = "👁";
+        } else {
+            input.type = "password";
+            this.textContent = "👁";
+        }
+    });
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const faqQuestions = document.querySelectorAll(".faq-question");
+
+    faqQuestions.forEach(function (question) {
+        question.addEventListener("click", function () {
+            const faqItem = question.closest(".faq-item");
+
+            if (!faqItem) return;
+
+            faqItem.classList.toggle("active");
+        });
+    });
+});
+
